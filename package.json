@@ -1,0 +1,24 @@
+{
+  "name": "~SHRTURL~",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview",
+    "lint": "eslint --ignore-path .gitignore ."
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-vercel": "^1.0.0-next.27",
+    "@sveltejs/kit": "next",
+    "eslint": "^7.22.0",
+    "eslint-plugin-svelte3": "^3.2.0",
+    "svelte": "^3.34.0",
+    "svelte-loading-spinners": "^0.1.7"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "firebase": "^8.9.0",
+    "svelte-clipboard": "0.0.2"
+  }
+}
