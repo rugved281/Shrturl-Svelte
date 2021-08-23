@@ -50,8 +50,13 @@ if(!firebase.apps.length) {
 function redirect_url() {
   firebase.database().ref('/urls/' + code).once('value').then(snapshot => {
     if(snapshot.exists()) {
-      document.getElementById("tst").href = "http://" + snapshot.val();
-      document.getElementById("tst").click()
+      if(!snapshot.val().startsWith("http")){
+        document.getElementById("tst").href = "//" + snapshot.val();
+        document.getElementById("tst").click()
+      } else{
+        document.getElementById("tst").href = snapshot.val();
+        document.getElementById("tst").click()
+        }
     } else {
       document.getElementById("tst").href = "https://shrturl.tk";
       document.getElementById("tst").click()
@@ -59,24 +64,29 @@ function redirect_url() {
   })
 }
 redirect_url()
-import {
-  DoubleBounce
-}
-from 'svelte-loading-spinners'
+// import {
+//   DoubleBounce
+// }
+// from 'svelte-loading-spinners'
 </script>
 <svelte:head>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@1.11.0/dist/full.css" rel="stylesheet" type="text/css" />
   <meta name="theme-color" content="#426ff5">
-  <meta property="og:title" content={code}>
+  <meta property="og:title" content={"Shrt URL - Redirecting..." + code}>
   <meta property="og:type" content="website">
   <meta property="og:url" content="/">
   <meta property="og:image" content="https://i.ibb.co/vd6DCD1/favicon.png">
-  <meta property="og:description" content="A Simple URL Shortner With Svelte"> </svelte:head>
+  <meta property="og:description" content="A Simple URL Shortner With Svelte">
+
+  <title>Shrt URL - Redirecting...</title>
+</svelte:head>
 <div class="hero min-h-screen bg-base-200">
   <div class="text-center hero-content">
     <div class="max-w-md">
       <a href="/" id="tst">
         <h1 class="mb-5 text-5xl font-bold">Redirecting... Please Wait</h1> </a>
-      <DoubleBounce size="70" color="#000000" unit="px" duration="1s"></DoubleBounce>
+      <!-- <DoubleBounce size="70" color="#000000" unit="px" duration="1s"></DoubleBounce> -->
       <p>If Any Error Please Contact On Github, @ArnavK-09
     </div>
   </div>

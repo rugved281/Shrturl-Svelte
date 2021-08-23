@@ -7060,7 +7060,7 @@ var require_index_node_cjs3 = __commonJS({
       }
       return dataSegs;
     };
-    function each2(obj, fn) {
+    function each(obj, fn) {
       for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
           fn(key, obj[key]);
@@ -7368,7 +7368,7 @@ var require_index_node_cjs3 = __commonJS({
         params["ns"] = repoInfo.namespace;
       }
       var pairs = [];
-      each2(params, function(key, value) {
+      each(params, function(key, value) {
         pairs.push(key + "=" + value);
       });
       return connURL + pairs.join("&");
@@ -10754,7 +10754,7 @@ var require_index_node_cjs3 = __commonJS({
         var children_1 = [];
         var childrenHavePriority_1 = false;
         var hinzeJsonObj = json;
-        each2(hinzeJsonObj, function(key, child2) {
+        each(hinzeJsonObj, function(key, child2) {
           if (key.substring(0, 1) !== ".") {
             var childNode = nodeFromJSON(child2);
             if (!childNode.isEmpty()) {
@@ -10777,7 +10777,7 @@ var require_index_node_cjs3 = __commonJS({
         }
       } else {
         var node_1 = ChildrenNode.EMPTY_NODE;
-        each2(json, function(key, childData) {
+        each(json, function(key, childData) {
           if (util.contains(json, key)) {
             if (key.substring(0, 1) !== ".") {
               var childNode = nodeFromJSON(childData);
@@ -11747,7 +11747,7 @@ var require_index_node_cjs3 = __commonJS({
         var newStats = this.collection_.get();
         var delta = tslib.__assign({}, newStats);
         if (this.last_) {
-          each2(this.last_, function(stat, value) {
+          each(this.last_, function(stat, value) {
             delta[stat] = delta[stat] - value;
           });
         }
@@ -11772,7 +11772,7 @@ var require_index_node_cjs3 = __commonJS({
         var stats2 = this.statsListener_.get();
         var reportedStats = {};
         var haveStatsToReport = false;
-        each2(stats2, function(stat, value) {
+        each(stats2, function(stat, value) {
           if (value > 0 && util.contains(_this.statsToReport_, stat)) {
             reportedStats[stat] = value;
             haveStatsToReport = true;
@@ -12012,7 +12012,7 @@ var require_index_node_cjs3 = __commonJS({
       }
       ImmutableTree2.fromObject = function(obj) {
         var tree = new ImmutableTree2(null);
-        each2(obj, function(childPath, childSnap) {
+        each(obj, function(childPath, childSnap) {
           tree = tree.set(new Path(childPath), childSnap);
         });
         return tree;
@@ -12228,7 +12228,7 @@ var require_index_node_cjs3 = __commonJS({
     }
     function compoundWriteAddWrites(compoundWrite, path, updates) {
       var newWrite = compoundWrite;
-      each2(updates, function(childKey, node) {
+      each(updates, function(childKey, node) {
         newWrite = compoundWriteAddWrite(newWrite, pathChild(path, childKey), node);
       });
       return newWrite;
@@ -12377,7 +12377,7 @@ var require_index_node_cjs3 = __commonJS({
           writeTree.visibleWrites = compoundWriteRemoveWrite(writeTree.visibleWrites, writeToRemove.path);
         } else {
           var children = writeToRemove.children;
-          each2(children, function(childName) {
+          each(children, function(childName) {
             writeTree.visibleWrites = compoundWriteRemoveWrite(writeTree.visibleWrites, pathChild(writeToRemove.path, childName));
           });
         }
@@ -13335,7 +13335,7 @@ var require_index_node_cjs3 = __commonJS({
         if (write.snap != null) {
           affectedTree_1 = affectedTree_1.set(newEmptyPath(), true);
         } else {
-          each2(write.children, function(pathString) {
+          each(write.children, function(pathString) {
             affectedTree_1 = affectedTree_1.set(new Path(pathString), true);
           });
         }
@@ -13612,7 +13612,7 @@ var require_index_node_cjs3 = __commonJS({
           if (maybeChildSyncPoint) {
             views_1 = syncPointGetQueryViews(maybeChildSyncPoint);
           }
-          each2(childMap, function(_key, childViews) {
+          each(childMap, function(_key, childViews) {
             views_1 = views_1.concat(childViews);
           });
           return views_1;
@@ -13659,7 +13659,7 @@ var require_index_node_cjs3 = __commonJS({
                 return view2.query;
               }));
             }
-            each2(childMap, function(_key, childQueries) {
+            each(childMap, function(_key, childQueries) {
               queries_1 = queries_1.concat(childQueries);
             });
             return queries_1;
@@ -13823,7 +13823,7 @@ var require_index_node_cjs3 = __commonJS({
       return treeGetValue(tree) === void 0 && !treeHasChildren(tree);
     }
     function treeForEachChild(tree, action) {
-      each2(tree.node.children, function(child2, childTree) {
+      each(tree.node.children, function(child2, childTree) {
         action(new Tree(child2, tree, childTree));
       });
     }
@@ -13910,7 +13910,7 @@ var require_index_node_cjs3 = __commonJS({
       if (data && typeof data === "object") {
         var hasDotValue_1 = false;
         var hasActualChild_1 = false;
-        each2(data, function(key, value) {
+        each(data, function(key, value) {
           if (key === ".value") {
             hasDotValue_1 = true;
           } else if (key !== ".priority" && key !== ".sv") {
@@ -13960,7 +13960,7 @@ var require_index_node_cjs3 = __commonJS({
         throw new Error(errorPrefix + " must be an object containing the children to replace.");
       }
       var mergePaths = [];
-      each2(data, function(key, value) {
+      each(data, function(key, value) {
         var curPath = new Path(key);
         validateFirebaseData(errorPrefix, value, pathChild(path, curPath));
         if (pathGetBack(curPath) === ".priority") {
@@ -14250,7 +14250,7 @@ var require_index_node_cjs3 = __commonJS({
       }
     }
     function repoOnServerInfoUpdate(repo, updates) {
-      each2(updates, function(key, value) {
+      each(updates, function(key, value) {
         repoUpdateInfo(repo, key, value);
       });
     }
@@ -14310,7 +14310,7 @@ var require_index_node_cjs3 = __commonJS({
       var empty2 = true;
       var serverValues = repoGenerateServerValues(repo);
       var changedChildren = {};
-      each2(childrenToMerge, function(changedKey, changedValue) {
+      each(childrenToMerge, function(changedKey, changedValue) {
         empty2 = false;
         changedChildren[changedKey] = resolveDeferredValueTree(pathChild(path, changedKey), nodeFromJSON(changedValue), repo.serverSyncTree_, serverValues);
       });
@@ -14328,7 +14328,7 @@ var require_index_node_cjs3 = __commonJS({
           eventQueueRaiseEventsForChangedPath(repo.eventQueue_, affectedPath, clearEvents);
           repoCallOnCompleteCallback(repo, onComplete, status, errorReason);
         });
-        each2(childrenToMerge, function(changedPath) {
+        each(childrenToMerge, function(changedPath) {
           var affectedPath = repoAbortTransactions(repo, pathChild(path, changedPath));
           repoRerunTransactions(repo, affectedPath);
         });
@@ -14389,7 +14389,7 @@ var require_index_node_cjs3 = __commonJS({
       }
       repo.server_.onDisconnectMerge(path.toString(), childrenToMerge, function(status, errorReason) {
         if (status === "ok") {
-          each2(childrenToMerge, function(childName, childNode) {
+          each(childrenToMerge, function(childName, childNode) {
             var newChildNode = nodeFromJSON(childNode);
             sparseSnapshotTreeRemember(repo.onDisconnect_, pathChild(path, childName), newChildNode);
           });
@@ -14444,7 +14444,7 @@ var require_index_node_cjs3 = __commonJS({
       var longestName = Object.keys(stats2).reduce(function(previousValue, currentValue) {
         return Math.max(currentValue.length, previousValue);
       }, 0);
-      each2(stats2, function(stat, value) {
+      each(stats2, function(stat, value) {
         var paddedStat = stat;
         for (var i = stat.length; i < longestName + 2; i++) {
           paddedStat += " ";
@@ -18018,13 +18018,6 @@ var escaped2 = {
 function escape2(html) {
   return String(html).replace(/["'&<>]/g, (match) => escaped2[match]);
 }
-function each(items, fn) {
-  let str = "";
-  for (let i = 0; i < items.length; i += 1) {
-    str += fn(items[i], i);
-  }
-  return str;
-}
 var missing_component = {
   $$render: () => ""
 };
@@ -18078,7 +18071,7 @@ function add_attribute(name, value, boolean) {
 }
 function afterUpdate() {
 }
-var css$1 = {
+var css = {
   code: "#svelte-announcer.svelte-1j55zn5{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}",
   map: `{"version":3,"file":"root.svelte","sources":["root.svelte"],"sourcesContent":["<!-- This file is generated by @sveltejs/kit \u2014 do not edit it! -->\\n<script>\\n\\timport { setContext, afterUpdate, onMount } from 'svelte';\\n\\n\\t// stores\\n\\texport let stores;\\n\\texport let page;\\n\\n\\texport let components;\\n\\texport let props_0 = null;\\n\\texport let props_1 = null;\\n\\texport let props_2 = null;\\n\\n\\tsetContext('__svelte__', stores);\\n\\n\\t$: stores.page.set(page);\\n\\tafterUpdate(stores.page.notify);\\n\\n\\tlet mounted = false;\\n\\tlet navigated = false;\\n\\tlet title = null;\\n\\n\\tonMount(() => {\\n\\t\\tconst unsubscribe = stores.page.subscribe(() => {\\n\\t\\t\\tif (mounted) {\\n\\t\\t\\t\\tnavigated = true;\\n\\t\\t\\t\\ttitle = document.title || 'untitled page';\\n\\t\\t\\t}\\n\\t\\t});\\n\\n\\t\\tmounted = true;\\n\\t\\treturn unsubscribe;\\n\\t});\\n<\/script>\\n\\n<svelte:component this={components[0]} {...(props_0 || {})}>\\n\\t{#if components[1]}\\n\\t\\t<svelte:component this={components[1]} {...(props_1 || {})}>\\n\\t\\t\\t{#if components[2]}\\n\\t\\t\\t\\t<svelte:component this={components[2]} {...(props_2 || {})}/>\\n\\t\\t\\t{/if}\\n\\t\\t</svelte:component>\\n\\t{/if}\\n</svelte:component>\\n\\n{#if mounted}\\n\\t<div id=\\"svelte-announcer\\" aria-live=\\"assertive\\" aria-atomic=\\"true\\">\\n\\t\\t{#if navigated}\\n\\t\\t\\t{title}\\n\\t\\t{/if}\\n\\t</div>\\n{/if}\\n\\n<style>\\n\\t#svelte-announcer {\\n\\t\\tposition: absolute;\\n\\t\\tleft: 0;\\n\\t\\ttop: 0;\\n\\t\\tclip: rect(0 0 0 0);\\n\\t\\tclip-path: inset(50%);\\n\\t\\toverflow: hidden;\\n\\t\\twhite-space: nowrap;\\n\\t\\twidth: 1px;\\n\\t\\theight: 1px;\\n\\t}\\n</style>"],"names":[],"mappings":"AAsDC,iBAAiB,eAAC,CAAC,AAClB,QAAQ,CAAE,QAAQ,CAClB,IAAI,CAAE,CAAC,CACP,GAAG,CAAE,CAAC,CACN,IAAI,CAAE,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CACnB,SAAS,CAAE,MAAM,GAAG,CAAC,CACrB,QAAQ,CAAE,MAAM,CAChB,WAAW,CAAE,MAAM,CACnB,KAAK,CAAE,GAAG,CACV,MAAM,CAAE,GAAG,AACZ,CAAC"}`
 };
@@ -18103,7 +18096,7 @@ var Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     $$bindings.props_1(props_1);
   if ($$props.props_2 === void 0 && $$bindings.props_2 && props_2 !== void 0)
     $$bindings.props_2(props_2);
-  $$result.css.add(css$1);
+  $$result.css.add(css);
   {
     stores.page.set(page);
   }
@@ -18130,7 +18123,7 @@ var user_hooks = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module"
 });
-var template = ({ head, body }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body>\n		<div id="svelte">' + body + "</div>\n	</body>\n</html>\n";
+var template = ({ head, body }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		  <meta charset="utf-8" />\n		  <meta name="theme-color" content="#426ff5">\n		  <meta property="og:title" content="Shrt URL">\n		  <meta property="og:type" content="website">\n		  <meta property="og:url" content="/">\n		  <meta property="og:image" content="https://i.ibb.co/vd6DCD1/favicon.png">\n		  <meta property="og:description" content="A Simple URL Shortner With Svelte">\n\n  <title>Shrt URL - Redirecting...{code}</title>\n		<link rel="icon" href="/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body>\n		<div id="svelte">' + body + "</div>\n	</body>\n</html>\n";
 var options = null;
 var default_settings = { paths: { "base": "", "assets": "" } };
 function init(settings = default_settings) {
@@ -18141,9 +18134,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-4132ad5f.js",
-      css: [assets + "/_app/assets/start-a8cd1609.css", assets + "/_app/assets/vendor-416e5d85.css"],
-      js: [assets + "/_app/start-4132ad5f.js", assets + "/_app/chunks/vendor-4424a132.js"]
+      file: assets + "/_app/start-85aebeb3.js",
+      css: [assets + "/_app/assets/start-a8cd1609.css", assets + "/_app/assets/vendor-7558c256.css"],
+      js: [assets + "/_app/start-85aebeb3.js", assets + "/_app/chunks/vendor-7a4ea0c2.js"]
     },
     fetched: void 0,
     floc: false,
@@ -18223,7 +18216,7 @@ var module_lookup = {
     return _code_;
   })
 };
-var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-847a39ec.js", "css": ["assets/vendor-416e5d85.css"], "js": ["pages/__layout.svelte-847a39ec.js", "chunks/vendor-4424a132.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-26e852fa.js", "css": ["assets/vendor-416e5d85.css"], "js": ["error.svelte-26e852fa.js", "chunks/vendor-4424a132.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-414f946c.js", "css": ["assets/vendor-416e5d85.css"], "js": ["pages/index.svelte-414f946c.js", "chunks/vendor-4424a132.js"], "styles": [] }, "src/routes/admin.svelte": { "entry": "pages/admin.svelte-9a5d54cb.js", "css": ["assets/vendor-416e5d85.css"], "js": ["pages/admin.svelte-9a5d54cb.js", "chunks/vendor-4424a132.js"], "styles": [] }, "src/routes/[code].svelte": { "entry": "pages/[code].svelte-6935ad74.js", "css": ["assets/vendor-416e5d85.css"], "js": ["pages/[code].svelte-6935ad74.js", "chunks/vendor-4424a132.js"], "styles": [] } };
+var metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-bb147ec4.js", "css": ["assets/vendor-7558c256.css"], "js": ["pages/__layout.svelte-bb147ec4.js", "chunks/vendor-7a4ea0c2.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-cbb80e72.js", "css": ["assets/vendor-7558c256.css"], "js": ["error.svelte-cbb80e72.js", "chunks/vendor-7a4ea0c2.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-70012aa9.js", "css": ["assets/vendor-7558c256.css"], "js": ["pages/index.svelte-70012aa9.js", "chunks/vendor-7a4ea0c2.js"], "styles": [] }, "src/routes/admin.svelte": { "entry": "pages/admin.svelte-68b505ca.js", "css": ["assets/vendor-7558c256.css"], "js": ["pages/admin.svelte-68b505ca.js", "chunks/vendor-7a4ea0c2.js"], "styles": [] }, "src/routes/[code].svelte": { "entry": "pages/[code].svelte-15fd7ff0.js", "css": ["assets/vendor-7558c256.css"], "js": ["pages/[code].svelte-15fd7ff0.js", "chunks/vendor-7a4ea0c2.js"], "styles": [] } };
 async function load_component(file) {
   const { entry, css: css2, js, styles } = metadata_lookup[file];
   return {
@@ -18299,7 +18292,7 @@ var Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     import_app.default.app();
   }
   import_app.default.database();
-  return `${$$result.head += `<link href="${"https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"}" rel="${"stylesheet"}" type="${"text/css"}" data-svelte="svelte-6cal5z"><link href="${"https://cdn.jsdelivr.net/npm/daisyui@1.11.0/dist/full.css"}" rel="${"stylesheet"}" type="${"text/css"}" data-svelte="svelte-6cal5z"><meta name="${"theme-color"}" content="${"#426ff5"}" data-svelte="svelte-6cal5z"><meta property="${"og:title"}" content="${"Shrt URL"}" data-svelte="svelte-6cal5z"><meta property="${"og:type"}" content="${"website"}" data-svelte="svelte-6cal5z"><meta property="${"og:url"}" content="${"/"}" data-svelte="svelte-6cal5z"><meta property="${"og:image"}" content="${"https://i.ibb.co/vd6DCD1/favicon.png"}" data-svelte="svelte-6cal5z"><meta property="${"og:description"}" content="${"A Simple URL Shortner With Svelte"}" data-svelte="svelte-6cal5z">`, ""}
+  return `${$$result.head += `<link href="${"https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"}" rel="${"stylesheet"}" type="${"text/css"}" data-svelte="svelte-1oz5wys"><link href="${"https://cdn.jsdelivr.net/npm/daisyui@1.11.0/dist/full.css"}" rel="${"stylesheet"}" type="${"text/css"}" data-svelte="svelte-1oz5wys"><meta name="${"theme-color"}" content="${"#426ff5"}" data-svelte="svelte-1oz5wys"><meta property="${"og:title"}" content="${"Shrt URL"}" data-svelte="svelte-1oz5wys"><meta property="${"og:type"}" content="${"website"}" data-svelte="svelte-1oz5wys"><meta property="${"og:url"}" content="${"/"}" data-svelte="svelte-1oz5wys"><meta property="${"og:image"}" content="${"https://i.ibb.co/vd6DCD1/favicon.png"}" data-svelte="svelte-1oz5wys"><meta property="${"og:description"}" content="${"A Simple URL Shortner With Svelte"}" data-svelte="svelte-1oz5wys">${$$result.title = `<title>Shrt Url</title>`, ""}`, ""}
 
 
 
@@ -18309,7 +18302,10 @@ var Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
         
         <div class="${"form-control"}"><div class="${"flex space-x-2"}"><input type="${"text"}" placeholder="${"Url To Be Shorten"}" class="${"w-full input input-primary input-bordered"}"${add_attribute("value", enteredUrl, 0)}>
             <button class="${"btn btn-primary"}">${escape2(arrow)}</button></div></div>
-        ${``}</div></div></div></div>`;
+        ${``}</div></div></div>
+    
+    ${``}
+    </div>`;
 });
 var index = /* @__PURE__ */ Object.freeze({
   __proto__: null,
@@ -18317,36 +18313,12 @@ var index = /* @__PURE__ */ Object.freeze({
   "default": Routes
 });
 var Admin = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `ADMIN`;
+  return `THIS IS ADMIN PLACE , JUST A RANOM ROUTE`;
 });
 var admin = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module",
   "default": Admin
-});
-var durationUnitRegex = /[a-zA-Z]/;
-var range = (size, startAt = 0) => [...Array(size).keys()].map((i) => i + startAt);
-var css = {
-  code: ".wrapper.svelte-h1a2xs{position:relative;width:var(--size);height:var(--size)}.circle.svelte-h1a2xs{position:absolute;width:var(--size);height:var(--size);background-color:var(--color);border-radius:100%;opacity:0.6;top:0;left:0;animation-fill-mode:both;animation-name:svelte-h1a2xs-bounce !important}@keyframes svelte-h1a2xs-bounce{0%,100%{transform:scale(0)}50%{transform:scale(1)}}",
-  map: '{"version":3,"file":"DoubleBounce.svelte","sources":["DoubleBounce.svelte"],"sourcesContent":["<script>;\\r\\nimport { range, durationUnitRegex } from \\"./utils\\";\\r\\nexport let color = \\"#FF3E00\\";\\r\\nexport let unit = \\"px\\";\\r\\nexport let duration = \\"2.1s\\";\\r\\nexport let size = \\"60\\";\\r\\nlet durationUnit = duration.match(durationUnitRegex)[0];\\r\\nlet durationNum = duration.replace(durationUnitRegex, \\"\\");\\r\\n<\/script>\\r\\n\\r\\n<style>\\r\\n  .wrapper {\\r\\n    position: relative;\\r\\n    width: var(--size);\\r\\n    height: var(--size);\\r\\n  }\\r\\n  .circle {\\r\\n    position: absolute;\\r\\n    width: var(--size);\\r\\n    height: var(--size);\\r\\n    background-color: var(--color);\\r\\n    border-radius: 100%;\\r\\n    opacity: 0.6;\\r\\n    top: 0;\\r\\n    left: 0;\\r\\n    animation-fill-mode: both;\\r\\n    animation-name: bounce !important;\\r\\n  }\\r\\n  @keyframes bounce {\\r\\n    0%,\\r\\n    100% {\\r\\n      transform: scale(0);\\r\\n    }\\r\\n    50% {\\r\\n      transform: scale(1);\\r\\n    }\\r\\n  }\\r\\n</style>\\r\\n\\r\\n<div class=\\"wrapper\\" style=\\"--size: {size}{unit}; --color: {color}\\">\\r\\n  {#each range(2, 1) as version}\\r\\n    <div\\r\\n      class=\\"circle\\"\\r\\n      style=\\"animation: {duration} {version === 1 ? `${(durationNum - 0.1) / 2}${durationUnit}` : `0s`} infinite ease-in-out\\" />\\r\\n  {/each}\\r\\n</div>\\r\\n"],"names":[],"mappings":"AAWE,QAAQ,cAAC,CAAC,AACR,QAAQ,CAAE,QAAQ,CAClB,KAAK,CAAE,IAAI,MAAM,CAAC,CAClB,MAAM,CAAE,IAAI,MAAM,CAAC,AACrB,CAAC,AACD,OAAO,cAAC,CAAC,AACP,QAAQ,CAAE,QAAQ,CAClB,KAAK,CAAE,IAAI,MAAM,CAAC,CAClB,MAAM,CAAE,IAAI,MAAM,CAAC,CACnB,gBAAgB,CAAE,IAAI,OAAO,CAAC,CAC9B,aAAa,CAAE,IAAI,CACnB,OAAO,CAAE,GAAG,CACZ,GAAG,CAAE,CAAC,CACN,IAAI,CAAE,CAAC,CACP,mBAAmB,CAAE,IAAI,CACzB,cAAc,CAAE,oBAAM,CAAC,UAAU,AACnC,CAAC,AACD,WAAW,oBAAO,CAAC,AACjB,EAAE,CACF,IAAI,AAAC,CAAC,AACJ,SAAS,CAAE,MAAM,CAAC,CAAC,AACrB,CAAC,AACD,GAAG,AAAC,CAAC,AACH,SAAS,CAAE,MAAM,CAAC,CAAC,AACrB,CAAC,AACH,CAAC"}'
-};
-var DoubleBounce = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let { color = "#FF3E00" } = $$props;
-  let { unit = "px" } = $$props;
-  let { duration = "2.1s" } = $$props;
-  let { size = "60" } = $$props;
-  let durationUnit = duration.match(durationUnitRegex)[0];
-  let durationNum = duration.replace(durationUnitRegex, "");
-  if ($$props.color === void 0 && $$bindings.color && color !== void 0)
-    $$bindings.color(color);
-  if ($$props.unit === void 0 && $$bindings.unit && unit !== void 0)
-    $$bindings.unit(unit);
-  if ($$props.duration === void 0 && $$bindings.duration && duration !== void 0)
-    $$bindings.duration(duration);
-  if ($$props.size === void 0 && $$bindings.size && size !== void 0)
-    $$bindings.size(size);
-  $$result.css.add(css);
-  return `<div class="${"wrapper svelte-h1a2xs"}" style="${"--size: " + escape2(size) + escape2(unit) + "; --color: " + escape2(color)}">${each(range(2, 1), (version) => `<div class="${"circle svelte-h1a2xs"}" style="${"animation: " + escape2(duration) + " " + escape2(version === 1 ? `${(durationNum - 0.1) / 2}${durationUnit}` : `0s`) + " infinite ease-in-out"}"></div>`)}</div>`;
 });
 async function load({ page }) {
   const code = page.params.code;
@@ -18378,8 +18350,13 @@ var U5Bcodeu5D = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   function redirect_url() {
     import_app.default.database().ref("/urls/" + code).once("value").then((snapshot) => {
       if (snapshot.exists()) {
-        document.getElementById("tst").href = "http://" + snapshot.val();
-        document.getElementById("tst").click();
+        if (!snapshot.val().startsWith("http")) {
+          document.getElementById("tst").href = "//" + snapshot.val();
+          document.getElementById("tst").click();
+        } else {
+          document.getElementById("tst").href = snapshot.val();
+          document.getElementById("tst").click();
+        }
       } else {
         document.getElementById("tst").href = "https://shrturl.tk";
         document.getElementById("tst").click();
@@ -18389,14 +18366,9 @@ var U5Bcodeu5D = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   redirect_url();
   if ($$props.code === void 0 && $$bindings.code && code !== void 0)
     $$bindings.code(code);
-  return `${$$result.head += `<meta name="${"theme-color"}" content="${"#426ff5"}" data-svelte="svelte-1s0ldaw"><meta property="${"og:title"}"${add_attribute("content", code, 0)} data-svelte="svelte-1s0ldaw"><meta property="${"og:type"}" content="${"website"}" data-svelte="svelte-1s0ldaw"><meta property="${"og:url"}" content="${"/"}" data-svelte="svelte-1s0ldaw"><meta property="${"og:image"}" content="${"https://i.ibb.co/vd6DCD1/favicon.png"}" data-svelte="svelte-1s0ldaw"><meta property="${"og:description"}" content="${"A Simple URL Shortner With Svelte"}" data-svelte="svelte-1s0ldaw">`, ""}
+  return `${$$result.head += `<link href="${"https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css"}" rel="${"stylesheet"}" type="${"text/css"}" data-svelte="svelte-1m237sx"><link href="${"https://cdn.jsdelivr.net/npm/daisyui@1.11.0/dist/full.css"}" rel="${"stylesheet"}" type="${"text/css"}" data-svelte="svelte-1m237sx"><meta name="${"theme-color"}" content="${"#426ff5"}" data-svelte="svelte-1m237sx"><meta property="${"og:title"}"${add_attribute("content", "Shrt URL - Redirecting..." + code, 0)} data-svelte="svelte-1m237sx"><meta property="${"og:type"}" content="${"website"}" data-svelte="svelte-1m237sx"><meta property="${"og:url"}" content="${"/"}" data-svelte="svelte-1m237sx"><meta property="${"og:image"}" content="${"https://i.ibb.co/vd6DCD1/favicon.png"}" data-svelte="svelte-1m237sx"><meta property="${"og:description"}" content="${"A Simple URL Shortner With Svelte"}" data-svelte="svelte-1m237sx">${$$result.title = `<title>Shrt URL - Redirecting...${escape2(code)}</title>`, ""}`, ""}
 <div class="${"hero min-h-screen bg-base-200"}"><div class="${"text-center hero-content"}"><div class="${"max-w-md"}"><a href="${"/"}" id="${"tst"}"><h1 class="${"mb-5 text-5xl font-bold"}">Redirecting... Please Wait</h1></a>
-      ${validate_component(DoubleBounce, "DoubleBounce").$$render($$result, {
-    size: "70",
-    color: "#000000",
-    unit: "px",
-    duration: "1s"
-  }, {}, {})}
+      
       <p>If Any Error Please Contact On Github, @ArnavK-09
     </p></div></div></div>`;
 });

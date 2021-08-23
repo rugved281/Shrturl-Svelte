@@ -12,8 +12,7 @@
     "@sveltejs/kit": "next",
     "eslint": "^7.22.0",
     "eslint-plugin-svelte3": "^3.2.0",
-    "svelte": "^3.34.0",
-    "svelte-loading-spinners": "^0.1.7"
+    "svelte": "^3.34.0"
   },
   "type": "module",
   "dependencies": {
