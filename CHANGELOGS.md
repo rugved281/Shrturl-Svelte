@@ -1,5 +1,1 @@
-## Changelogs
-
-- Faster Redirects - ````Beta````
-- Some SEO Work
-  
+## No Change Logs As It Is Re Deployed, Due To Crash
