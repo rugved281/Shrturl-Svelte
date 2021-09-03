@@ -1,6 +1,5 @@
 [Click On Me To Visit Website](https://shrturl.tk)
 
- - **See Changelogs.md To See Changes In This Server**
 
 # A Simple URL Shortner With Svelte
 

@@ -7,10 +7,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="/">
   <meta property="og:image" content="https://i.ibb.co/vd6DCD1/favicon.png">
-  <meta property="og:description" content="A Simple URL Shortner With Svelte">
-
-  <title>Shrt Url</title>
-</svelte:head>
+  <meta property="og:description" content="A Simple URL Shortner With Svelte"> </svelte:head>
 <script>
 //unique id
 function genid() {
@@ -20,7 +17,7 @@ function genid() {
 let url = "shrturl.tk"
 let code = "ew2w"
 let arrow = "ᐅ";
-let notifier = false;
+let down_arrow = "ᐁ";
 let enteredUrl;
 let shortned = false;
 //db
@@ -57,18 +54,6 @@ if(!firebase.apps.length) {
   firebase.app(); // if already initialized, use that one
 }
 var db = firebase.database();
-
-//valid url
-
-function validURL(str) {
-  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-    '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-  return !!pattern.test(str);
-}
 //short url
 function shortUrl() {
   // Get a key for a new Post.
@@ -77,19 +62,25 @@ function shortUrl() {
   var updates = {};
   let temp_id = genid().toString().toLowerCase();
   updates['/urls/' + temp_id] = enteredUrl;
-  url = "https://shrturl.tk/" + temp_id;
+  url = "shrturl.tk/" + temp_id;
   shortned = true;
-  notifier = false;
   return firebase.database().ref().update(updates).catch(e => alert(e));
 }
 
-
-var testCase1 = "http://en.wikipedia.org/wiki/Procter_&_Gamble";
-
 function check() {
-  if(enteredUrl == " " || enteredUrl == ""){return}
-  else if(validURL(enteredUrl) == true){shortUrl()}
-  else{notifier = true}
+  if(enteredUrl) {
+    if(!enteredUrl.includes(".")) {
+      if(!enteredUrl.startsWith("http")) {
+        alert("Please Enter Valid URL")
+      } else {
+        shortUrl()
+      }
+    } else {
+      shortUrl()
+    }
+  } else {
+    alert("Enter The URL")
+  }
 }
 //copy paste zone
 import Clipboard from "svelte-clipboard";
@@ -99,9 +90,6 @@ function onEnter(event) {
     check()
   }
 }
-//close
-const close_modal = () => {notifier = false}
-
 </script>
 <svelte:window on:keydown="{onEnter}" />
 <!-- //hero -->
@@ -132,20 +120,4 @@ const close_modal = () => {notifier = false}
         </Clipboard> {/if} </div>
     </div>
   </div>
-    <!-- notifier -->
-    {#if notifier == true} 
-      <div class="alert">
-        <div class="flex-1">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#ff5722" class="w-6 h-6 mx-2">    
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path>                      
-              </svg> 
-              <label class="mx-3">The URL Is Invalid, Do You Still Want To Short It?</label>
-        </div> 
-        <div class="flex-none">
-            <button on:click={close_modal} class="btn btn-sm btn-ghost mr-2">No</button> 
-            <button on:click={shortUrl} class="btn btn-sm btn-primary">Yes</button>
-        </div>
-    </div>
-    {/if}
-    <!-- notifier end -->
 </div>

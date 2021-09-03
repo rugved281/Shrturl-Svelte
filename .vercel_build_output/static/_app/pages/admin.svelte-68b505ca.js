@@ -1,1 +1,0 @@
-import{S as s,i as a,s as t,t as e,g as r,f as n,J as o,d as A}from"../chunks/vendor-7a4ea0c2.js";function c(s){let a;return{c(){a=e("THIS IS ADMIN PLACE , JUST A RANOM ROUTE")},l(s){a=r(s,"THIS IS ADMIN PLACE , JUST A RANOM ROUTE")},m(s,t){n(s,a,t)},p:o,i:o,o:o,d(s){s&&A(a)}}}class u extends s{constructor(s){super(),a(this,s,null,c,t,{})}}export{u as default};
