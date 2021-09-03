@@ -1,4 +1,4 @@
-[![website](https://img.shields.io/badge/Click%20On%20Me%20To%20Visit%20Website-shrturl.tk-important)](shrturl.tk)
+[Click On Me To Visit Website](https://shrturl.tk)
 
  - **See Changelogs.md To See Changes In This Server**
 

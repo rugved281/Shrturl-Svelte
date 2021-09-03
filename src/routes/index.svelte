@@ -2,6 +2,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1/dist/tailwind.min.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@1.11.0/dist/full.css" rel="stylesheet" type="text/css" />
   <meta name="theme-color" content="#426ff5">
+  <meta name="description" content="A Simple URL Shortner With Svelte">
   <meta property="og:title" content="Shrt URL">
   <meta property="og:type" content="website">
   <meta property="og:url" content="/">
